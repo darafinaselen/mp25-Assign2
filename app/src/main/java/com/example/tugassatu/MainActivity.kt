@@ -5,10 +5,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
@@ -27,14 +24,17 @@ class MainActivity : AppCompatActivity() {
             val nama2 = etNamaKedua.text.toString().trim()
 
             if (nama1.isNotEmpty() && nama2.isNotEmpty()) {
-                val randomValue1 = Random.nextInt(0, 101) // Nilai antara 0% - 100%
+                val randomValue1 = Random.nextInt(0, 101)
                 val randomValue2 = Random.nextInt(0, 101)
 
-                txtOverImage1.text = "$randomValue1%"
-                txtOverImage2.text = "$randomValue2%"
+                txtOverImage1.text = getString(R.string.percentage_format, randomValue1)
+                txtOverImage2.text = getString(R.string.percentage_format, randomValue2)
 
                 txtOverImage1.visibility = View.VISIBLE
                 txtOverImage2.visibility = View.VISIBLE
+            }else {
+                txtOverImage1.visibility = View.INVISIBLE
+                txtOverImage2.visibility = View.INVISIBLE
             }
         }
     }
